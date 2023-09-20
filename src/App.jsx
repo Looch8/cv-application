@@ -1,5 +1,5 @@
 import "./App.css";
-import Personal from "./components/Personal";
+import FullName from "./components/personal-info/FullName";
 // import React from "react";
 
 // Section to add general information - name, edmail, phone number etc
@@ -17,7 +17,7 @@ function App() {
 		<>
 			<h1>Resume</h1>
 			<section className="forms">
-				<Personal />
+				<FullName />
 			</section>
 		</>
 	);

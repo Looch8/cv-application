@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-function Personal() {
+function FullName() {
 	const [name, setName] = useState("");
 	const [displayedName, setDisplayedName] = useState("");
 
@@ -30,4 +30,4 @@ function Personal() {
 	);
 }
 
-export default Personal;
+export default FullName;
