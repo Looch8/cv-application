@@ -1,24 +1,62 @@
+import { useState } from "react";
 import "./App.css";
 import FullName from "./components/personal-info/FullName";
+import Email from "./components/personal-info/Email";
+import Education from "./components/Education";
+import Experience from "./components/Experience";
+import ResumeSummary from "./components/ResumeSummary";
 // import React from "react";
 
-// Section to add general information - name, edmail, phone number etc
-// Section to add education (school name, title of study, date of study)
-// Section to add practical experience (Company name, title of position, date of employment, description of duties)
-
-// Include edit and submit button for each seciton to allow for editing and saving of information
-// Submit button should submit form and display the value of input fields in HTML elements.
-// Edit button should add back (display) the input fields, with the previous displayed information as values in the input fields.
-// in the input fields, you should be able to edit and resubmit the content.
-// Make heavy use of state and props
-
 function App() {
+	const [resumeData, setResumeData] = useState({
+		fullName: "",
+		email: "",
+		school: "",
+		degree: "",
+		company: "",
+		position: "",
+	});
+
+	//Functions to update resume data
+	const updateFullName = (name) => {
+		setResumeData((prevData) => ({ ...prevData, fullName: name }));
+	};
+
+	const updateEmail = (email) => {
+		setResumeData((prevData) => ({ ...prevData, email: email }));
+	};
+
+	const updateSchool = (school) => {
+		setResumeData((prevData) => ({ ...prevData, school: school }));
+	};
+
+	const updateDegree = (degree) => {
+		setResumeData((prevData) => ({ ...prevData, degree: degree }));
+	};
+
+	const updateCompany = (company) => {
+		setResumeData((prevData) => ({ ...prevData, company: company }));
+	};
+
+	const updatePosition = (position) => {
+		setResumeData((prevData) => ({ ...prevData, position: position }));
+	};
 	return (
 		<>
 			<h1>Resume</h1>
 			<section className="forms">
-				<FullName />
+				<FullName onNameChange={updateFullName} />
+				<Email onEmailChange={updateEmail} />
+				<Education
+					onSchoolChange={updateSchool}
+					onDegreeChange={updateDegree}
+				/>
+				<Experience
+					onCompanyChange={updateCompany}
+					onPositionChange={updatePosition}
+				/>
 			</section>
+			<ResumeSummary {...resumeData} />
 		</>
 	);
 }

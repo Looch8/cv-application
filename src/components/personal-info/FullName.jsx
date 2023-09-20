@@ -5,8 +5,9 @@ function FullName() {
 	const [displayedName, setDisplayedName] = useState("");
 
 	const handleNameChange = (e) => {
-		setName(e.target.value);
-		setDisplayedName(e.target.value); // This is to display the name as it is being typed
+		const newName = e.target.value;
+		setName(newName);
+		props.onNameChange(newName); // Call the update function passed in as a prop
 	};
 
 	const handleSubmit = (e) => {
