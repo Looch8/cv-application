@@ -5,7 +5,6 @@ import Email from "./components/personal-info/Email";
 import Education from "./components/Education";
 import Experience from "./components/Experience";
 import ResumeSummary from "./components/ResumeSummary";
-// import React from "react";
 
 function App() {
 	const [resumeData, setResumeData] = useState({
@@ -41,6 +40,12 @@ function App() {
 	const updatePosition = (position) => {
 		setResumeData((prevData) => ({ ...prevData, position: position }));
 	};
+
+	const handleSubmitAll = () => {
+		// Update the summary with all the data at once
+
+		setResumeData({ ...resumeData });
+	};
 	return (
 		<>
 			<h1>Resume</h1>
@@ -55,6 +60,9 @@ function App() {
 					onCompanyChange={updateCompany}
 					onPositionChange={updatePosition}
 				/>
+				<button type="submit" onClick={handleSubmitAll}>
+					Submit Resume{" "}
+				</button>
 			</section>
 			<ResumeSummary {...resumeData} />
 		</>

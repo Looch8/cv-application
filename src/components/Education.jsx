@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Education() {
+function Education(props) {
 	const [school, setSchool] = useState("");
 	const [degree, setDegree] = useState("");
 
@@ -10,6 +10,12 @@ function Education() {
 
 	const handleDegreeChange = (e) => {
 		setDegree(e.target.value);
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		props.onSchoolChange(school);
+		props.onDegreeChange(degree);
 	};
 
 	return (
@@ -28,13 +34,10 @@ function Education() {
 					value={degree}
 					onChange={handleDegreeChange}
 				/>
+				<button type="submit" onClick={handleSubmit}>
+					Submit
+				</button>
 			</form>
-			{school && degree && (
-				<div>
-					<h2>School: {school}</h2>
-					<h2>Degree: {degree}</h2>
-				</div>
-			)}
 		</div>
 	);
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Experience() {
+function Experience(props) {
 	const [company, setCompany] = useState("");
 	const [position, setPosition] = useState("");
 
@@ -10,6 +10,12 @@ function Experience() {
 
 	const handlePositionChange = (e) => {
 		setPosition(e.target.value);
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		props.onCompanyChange(company);
+		props.onPositionChange(position);
 	};
 
 	return (
@@ -29,12 +35,9 @@ function Experience() {
 					onChange={handlePositionChange}
 				/>
 			</form>
-			{company && position && (
-				<div>
-					<h2>Company: {company}</h2>
-					<h2>Position: {position}</h2>
-				</div>
-			)}
+			<button type="submit" onClick={handleSubmit}>
+				Submit
+			</button>
 		</div>
 	);
 }

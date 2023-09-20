@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function FullName() {
+function FullName(props) {
 	const [name, setName] = useState("");
 	const [displayedName, setDisplayedName] = useState("");
 
@@ -12,11 +12,12 @@ function FullName() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		setDisplayedName(name);
 	};
 
 	return (
 		<div>
-			<h1>Personal Information</h1>
+			<h1>Full Name</h1>
 			<form onSubmit={handleSubmit}>
 				<input
 					type="text"
